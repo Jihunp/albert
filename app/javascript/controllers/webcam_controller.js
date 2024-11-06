@@ -5,9 +5,9 @@ export default class extends Controller {
   static targets = ["video", "canvas"]
 
   connect() {
+    console.log(this.roomId)
     this.startWebcam()
     this.createSubscription()
-
   }
 
   startWebcam() {
@@ -22,11 +22,18 @@ export default class extends Controller {
   }
 
   createSubscription() {
-    this.channel = createConsumer().subscriptions.create("ChatChannel", {
+    this.roomId = this.generateRoomId()
+    this.channel = createConsumer().subscriptions.create(
+      { channel: "ChatChannel", room_id: this.roomId },
+      {
       received: (data) => {
         console.log("received data from backend", data)
       }
     })
+  }
+
+  generateRoomId() {
+    return Math.random().toString(36).substring(2, 6)
   }
 
   capture() {
