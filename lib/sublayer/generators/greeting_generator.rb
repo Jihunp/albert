@@ -20,7 +20,9 @@ module Sublayer
           Greet that person.
         PROMPT
       end
-      
+      def image_url
+        @image_url
+      end
     end
   end
 end
