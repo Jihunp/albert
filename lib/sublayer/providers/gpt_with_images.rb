@@ -3,8 +3,8 @@
 
 module Sublayer
   module Providers
-    class OpenAI
-      def self.call(prompt:, output_adapter:)
+    class GptWithImages
+      def self.call(prompt:, output_adapter:, image_url:)
         client = ::OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))
 
         request_id = SecureRandom.uuid
@@ -27,8 +27,8 @@ module Sublayer
                   {
                     type: 'text',
                     text: prompt
-                  }
-                ]
+                  },
+                ] + image_content(image_url)
               }
             ],
             tool_choice: { type: "function", function: { name: output_adapter.name }},
@@ -71,6 +71,17 @@ module Sublayer
         raise "Error generating with OpenAI. Error: Max tokens exceeded. Try breaking your problem up into smaller pieces." if response["choices"][0]["finish_reason"] == "length"
 
         results = JSON.parse(function_body)[output_adapter.name]
+      end
+      def self.image_content(image_url)
+        return [] if image_url == nil
+        [ 
+        {
+          type:"image.url",
+          image_url: {
+            url: image_url
+          }
+        }
+        ]
       end
     end
   end

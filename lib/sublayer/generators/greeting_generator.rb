@@ -1,6 +1,6 @@
 module Sublayer
   module Generators
-    class GreetingGenerator < Sublayer::Generators::Base
+    class GreetingGenerator < Sublayer::Generators::ImageBase
       llm_output_adapter type: :single_string,
         name: 'greeting',
         description: 'Polite greeting to a person you have just seen'

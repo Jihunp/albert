@@ -1,6 +1,6 @@
 module Sublayer
   module Generators
-    class MyFirstGenerator < Base
+    class MyFirstGenerator < ImageBase
       llm_output_adapter type: :single_string,
         name: 'dr_seuss_poem',
         description: 'A Dr. Seuss-style poem with rhymes, made-up words, and whimsical characters.'
