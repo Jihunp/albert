@@ -3,8 +3,8 @@ module Sublayer
     class MyFirstGenerator < Base
       llm_output_adapter type: :single_string,
         name: 'dr_seuss_poem',
-        description: 'dr Seuss styled poem'
-
+        description: 'A Dr. Seuss-style poem with rhymes, made-up words, and whimsical characters.'
+        
       def initialize
       end
 
@@ -14,7 +14,7 @@ module Sublayer
 
       def prompt
         <<-PROMPT
-          Write a poem in the style of dr suess.
+          Create a short, rhyming poem in Dr. Seuss’s style about whimsical, made-up characters in an imaginative setting. Use playful language and made-up words.
         PROMPT
       end
     end
