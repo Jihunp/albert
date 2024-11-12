@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["video", "canvas"]
 
   connect() {
-    console.log(this.roomId)
+    // console.log(this.roomId)
     this.startWebcam()
     this.createSubscription()
   }

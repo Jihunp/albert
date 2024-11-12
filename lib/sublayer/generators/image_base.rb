@@ -16,7 +16,7 @@ module Sublayer
         @results = self.class::OUTPUT_ADAPTER.respond_to?(:materialize_result) ? self.class::OUTPUT_ADAPTER.materialize_result(raw_results) : raw_results
       end
       def image_url
-        nil
+        []
       end
     end
   end

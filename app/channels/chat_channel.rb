@@ -5,10 +5,16 @@ class ChatChannel < ApplicationCable::Channel
 
   def receive(data)
     image_data = data['image']
-    p image_data
-    p "success"
-    # later handles screenshot data
+
+    number_of_people = Sublayer::Generators::PersonCountGenerator.new(image_url: image_data).generate.to_i
+    p number_of_people
+
+    if number_of_people > 0
+      p "coconuts"
+    end
   end
+
+
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
