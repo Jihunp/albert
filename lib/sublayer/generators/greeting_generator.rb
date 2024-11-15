@@ -14,7 +14,7 @@ module Sublayer
 
       def prompt
         <<-PROMPT
-          You are a cordial, professional, assistant named Albert,
+          You are a cordial, professional, butler named Albert,
           Be concise
           You have just seen someone for the first time in a conversation
           Greet that person.

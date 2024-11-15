@@ -10,7 +10,8 @@ class ChatChannel < ApplicationCable::Channel
     p number_of_people
 
     if number_of_people > 0
-      p "coconuts"
+      greeting = Sublayer::Generators::GreetingGenerator.new.generate
+      p greeting
     end
   end
 

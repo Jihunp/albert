@@ -5,7 +5,6 @@ module Sublayer
   module Providers
     class GptWithImages
       def self.call(prompt:, output_adapter:, image_url:)
-        p "CUCUNUTs"
         client = ::OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))
 
         request_id = SecureRandom.uuid
