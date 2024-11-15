@@ -1,14 +1,14 @@
 
-<div data-controller="webcam" class="flex items-center justify-center mt-16">
+<div data-controller="chat" class="flex items-center justify-center mt-16">
   <div class="flex flex-col items-center space-y-10">
     <div class="moon-container flex justify-center">
       <div class="moon"></div>
     </div> 
     <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center space-y-4 w-full border-8 border-gray-300">
-      <div data-webcam-target="chatroom" class="h-96 bg-gray-200 rounded-lg flex flex-row items-center justify-center shadow-inner w-full"></div>
-      <video data-webcam-target="video" autoplay class="rounded-lg shadow-lg w-full "></video>
-      <canvas data-webcam-target="canvas" class="rounded-lg shadow-lg border border-gray-300 w-full "></canvas>
-      <button data-action="click->webcam#capture" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition duration-150">Take Screenshot</button>
+      <div data-chat-target="chatroom" class="h-96 bg-white rounded-lg flex flex-row  shadow-inner w-full"></div>
+      <video data-chat-target="video" autoplay class="rounded-lg shadow-lg w-full "></video>
+      <canvas data-chat-target="canvas" class="rounded-lg shadow-lg border border-gray-300 w-full "></canvas>
+      <button data-action="click->chat#capture" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition duration-150">Take Screenshot</button>
     </div>
   </div>
 </div>

@@ -12,6 +12,7 @@ class ChatChannel < ApplicationCable::Channel
     if number_of_people > 0
       greeting = Sublayer::Generators::GreetingGenerator.new.generate
       p greeting
+      ActionCable.server.broadcast("chat_channel_#{params[:room_id]}", greeting)
     end
   end
 

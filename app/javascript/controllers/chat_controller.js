@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
-  static targets = ["video", "canvas"]
+  static targets = ["video", "canvas", "chatroom"]
 
   connect() {
     // console.log(this.roomId)
@@ -26,10 +26,14 @@ export default class extends Controller {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatChannel", room_id: this.roomId },
       {
-      received: (data) => {
-        console.log("received data from backend", data)
+        received: this._received.bind(this)
       }
-    })
+    )
+  }
+
+  _received(data) {
+    console.log(this.chatroomTarget)
+    this.chatroomTarget.innerHTML = data
   }
 
   generateRoomId() {
