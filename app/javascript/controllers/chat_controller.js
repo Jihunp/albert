@@ -33,7 +33,7 @@ export default class extends Controller {
 
   _received(data) {
     // console.log(this.chatroomTarget)
-    this.chatroomTarget.innerHTML = data
+    this.chatroomTarget.innerHTML += `<div>ALBERT: ${data}</div>`
   }
 
   generateRoomId() {
@@ -47,7 +47,7 @@ export default class extends Controller {
     canvas.height = this.videoTarget.videoHeight
     context.drawImage(this.videoTarget, 0, 0, canvas.width, canvas.height)
 
-    const imageData = canvas.toDataURL("image/png")
+    const imageData = canvas.toDataURL("image/jpeg")
     this.channel.send({ image: imageData })
   }
 }
