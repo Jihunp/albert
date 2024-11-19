@@ -32,7 +32,7 @@ export default class extends Controller {
   }
 
   _received(data) {
-    console.log(this.chatroomTarget)
+    // console.log(this.chatroomTarget)
     this.chatroomTarget.innerHTML = data
   }
 
