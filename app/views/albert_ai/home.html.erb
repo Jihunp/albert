@@ -5,10 +5,15 @@
       <div class="moon"></div>
     </div> 
     <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center space-y-4 w-full border-8 border-gray-300">
-      <div data-chat-target="chatroom" class="h-96 bg-white rounded-lg flex flex-row  shadow-inner w-full"></div>
+
+      <div data-chat-target="chatroom" class="h-96 bg-white rounded-lg flex flex-col  shadow-inner w-full"></div>
+      <button data-action="click->chat#capture" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition duration-150">Take Screenshot</button>
+      
+      <input data-chat-target="chatInput"></input>
+      <button data-action="click->chat#sendMessage">hello</button>
+
       <video data-chat-target="video" autoplay class="rounded-lg shadow-lg w-full "></video>
       <canvas data-chat-target="canvas" class="rounded-lg shadow-lg border border-gray-300 w-full "></canvas>
-      <button data-action="click->chat#capture" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition duration-150">Take Screenshot</button>
     </div>
   </div>
 </div>

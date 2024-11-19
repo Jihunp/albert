@@ -2,12 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
-  static targets = ["video", "canvas", "chatroom"]
+  static targets = ["video", "canvas", "chat", "chatroom", "chatInput"]
 
   connect() {
     // console.log(this.roomId)
     this.startWebcam()
     this.createSubscription()
+    // setTimeout(() => {
+    //   this.capture()
+    // }, 4000)
   }
 
   startWebcam() {
@@ -32,7 +35,7 @@ export default class extends Controller {
   }
 
   _received(data) {
-    // console.log(this.chatroomTarget)
+
     this.chatroomTarget.innerHTML += `<div>ALBERT: ${data}</div>`
   }
 
@@ -49,5 +52,10 @@ export default class extends Controller {
 
     const imageData = canvas.toDataURL("image/jpeg")
     this.channel.send({ image: imageData })
+  }
+
+  sendMessage() {
+    // this.chatTarget.innerHTML
+    console.log(this.chatInputTarget.value)
   }
 }
