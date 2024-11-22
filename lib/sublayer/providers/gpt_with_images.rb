@@ -76,12 +76,12 @@ module Sublayer
       def self.image_content(image_url)
         return [] if image_url == nil
         [ 
-        {
-          type:"image_url",
-          image_url: {
-            url: image_url
+          {
+            type:"image_url",
+            image_url: {
+              url: image_url
+            }
           }
-        }
         ]
       end
     end

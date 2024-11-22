@@ -2,8 +2,8 @@ module Sublayer
   module Generators
     class PersonCountGenerator < Sublayer::Generators::ImageBase
       llm_output_adapter type: :single_string,
-        name: 'person_count',
-        description: 'integer of the number of people in the image'
+        name: "person_count",
+        description: "integer of the number of people in the image"
         
         def initialize(image_url:)
           @image_url = image_url

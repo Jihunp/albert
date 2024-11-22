@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
 export default class extends Controller {
-  static targets = ["video", "canvas", "chat", "chatroom", "chatInput"]
+  static targets = ["video", "canvas", "chat", "chatInput"]
 
   connect() {
     // console.log(this.roomId)
@@ -35,8 +35,7 @@ export default class extends Controller {
   }
 
   _received(data) {
-
-    this.chatroomTarget.innerHTML += `<div>ALBERT: ${data}</div>`
+    this.chatTarget.innerHTML += `<div>ALBERT: ${data}</div>`
   }
 
   generateRoomId() {
@@ -51,11 +50,11 @@ export default class extends Controller {
     context.drawImage(this.videoTarget, 0, 0, canvas.width, canvas.height)
 
     const imageData = canvas.toDataURL("image/jpeg")
-    this.channel.send({ image: imageData })
+    this.channel.send({ type: 'capture', image: imageData })
   }
 
   sendMessage() {
-    // this.chatTarget.innerHTML
-    console.log(this.chatInputTarget.value)
+    this.chatTarget.innerHTML += `<div>Edward: ${this.chatInputTarget.value}</div>`
+    this.channel.send({ type: 'send_message', message: this.chatInputTarget.value })
   }
 }
