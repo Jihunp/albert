@@ -3,7 +3,6 @@ class Conversation < ApplicationRecord
 
   def history
     formatted_messages = messages.map { |m| "#{m.user}: #{m.content}" }
-    
     formatted_messages.join("\n")
   end
 end

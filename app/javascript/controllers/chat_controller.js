@@ -55,6 +55,6 @@ export default class extends Controller {
 
   sendMessage() {
     this.chatTarget.innerHTML += `<div>Edward: ${this.chatInputTarget.value}</div>`
-    this.channel.send({ type: 'send_message', message: this.chatInputTarget.value })
+    this.channel.send({ type: "send_message", message: this.chatInputTarget.value })
   }
 }
