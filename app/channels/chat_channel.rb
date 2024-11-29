@@ -42,9 +42,7 @@ class ChatChannel < ApplicationCable::Channel
 
     conversation_history = current_convo.history
 
-    p "COCONUTS"
-    reply = Sublayer::Generators::ReplyGenerator.new(conversation_history: conversation_history).generate
-    # 
+    reply = Sublayer::Generators::ReplyGenerator.new(conversation_history: conversation_history).generate 
     current_convo.messages.create(user: "ALBERT", content: reply)
     
     p reply
