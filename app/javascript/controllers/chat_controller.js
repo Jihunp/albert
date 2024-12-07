@@ -36,6 +36,8 @@ export default class extends Controller {
   }
 
   _received(data) {
+    console.log("I received data to post for albert")
+    console.log(data)
     this.chatTarget.innerHTML += `<div>ALBERT: ${data}</div>`;
     const utterance = new SpeechSynthesisUtterance(data);
     const synth = window.speechSynthesis;

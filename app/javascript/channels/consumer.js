@@ -1,6 +1,9 @@
-// Action Cable provides the framework to deal with WebSockets in Rails.
-// You can generate new channels where WebSocket features live using the `bin/rails generate channel` command.
+// this will be changed during production
+// Allows for redis connection to port 6380
+import { createConsumer } from "@rails/actioncable";
 
-import { createConsumer } from "@rails/actioncable"
+const consumer = createConsumer("ws://localhost:6380/cable");
 
-export default createConsumer()
+export default consumer;
+
+

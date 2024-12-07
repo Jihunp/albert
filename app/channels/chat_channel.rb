@@ -19,20 +19,34 @@ class ChatChannel < ApplicationCable::Channel
 
   def handle_image(data)
     image_data = data['image']
+    GreetingJob.perform_later(image_data: image_data, channel_key: channel_key)
 
-    number_of_people = Sublayer::Generators::PersonCountGenerator.new(image_url: image_data).generate.to_i
-    p number_of_people
+    # number_of_people = Sublayer::Generators::PersonCountGenerator.new(image_url: image_data).generate.to_i
+    # p number_of_people
 
-    if number_of_people > 0
-      greeting = Sublayer::Generators::GreetingGenerator.new.generate
+    # if number_of_people > 0
+    #   p "number of people is greater than 1"
+    #   greeting = Sublayer::Generators::GreetingGenerator.new.generate
 
-      conversation = Conversation.create
-      conversation.messages.create(content: greeting, user: "ALBERT")
+    #   p greeting
 
-      ActionCable.server.broadcast(channel_key, greeting)
-    else
-      ActionCable.server.broadcast(channel_key, "whistling~~~")
-    end
+    #   conversation = Conversation.create
+
+    #   puts "conversation"
+    #   puts conversation
+
+    #   conversationOfUser = conversation.messages.create(content: greeting, user: "ALBERT")
+      
+    #   puts conversationOfUser
+    #   puts "check channel key"
+    #   p channel_key
+
+    #   # the error is in redis database. It is definetly picking up the wrong database
+
+    #   ActionCable.server.broadcast(channel_key, greeting)
+    # else
+    #   ActionCable.server.broadcast(channel_key, "whistling~~~")
+    # end
   end
 
   def handle_send_message(data)

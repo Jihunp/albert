@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
 
 gem "importmap-rails"
 gem "jbuilder"
@@ -14,6 +13,7 @@ gem "stimulus-rails"
 gem "sublayer"
 gem "tailwindcss-rails"
 gem "turbo-rails"
+ruby "3.3.0"
 
 # gem "kredis"
 
