@@ -28,7 +28,7 @@ class ChatChannel < ApplicationCable::Channel
 
     ReplyJob.perform_later(convo: current_convo, channel_key: channel_key, message: message)
 
-    ReminderJob.perform_later() #we are going to check on this later
+    ReminderJob.perform_later(convo: current_convo, channel_key: channel_key, message: message)
 
     # current_convo.messages.create(content: message, user: "Edward")
 

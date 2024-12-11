@@ -5,7 +5,7 @@ module Sublayer
         name: "reply",
         description: "A reply that continues the conversation"
         
-      def initialize(conversation_history:)
+      def initialize(conversation_history)
         @conversation_history = conversation_history
       end
 

@@ -11,25 +11,31 @@ module Sublayer
           { name: "is_a_reminder_request", description: "Boolean indicating if the message is a request for a reminder ('true' or 'false')." }
         ]
 
-      def initialize(message:)
+      def initialize(convo_history: "", message:)
+        @convo_history = convo_history
         @message = message
       end
-
+      
+      # def initialize(message:)
+      #   @message = message
+      # end
+      
       def generate
         super
       end
 
-      # Conversation history:
-      #{@convo_history}
       
       def prompt
         <<-PROMPT
           Evaluate the most recent message.
           Determine if the most recent message is requesting a reminder. Provide:
-
+          
           1. A justification for your conclusion in natural language.
           2. A boolean value ('true' or 'false') based on whether the message is a reminder request.
-
+          
+          current_history_context:
+          #{@convo_history}
+          
           Most recent message:
           #{@message}
         PROMPT
